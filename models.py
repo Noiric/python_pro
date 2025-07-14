@@ -1,4 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
+from django.db import models
 
 db = SQLAlchemy()
 
@@ -31,6 +32,25 @@ class Course(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(128), nullable=False)
     learning_plan = db.Column(db.Text, nullable=True)
+
+    def __str__(self):
+        return self.name
+
+
+class Department(models.Model):
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
+        class Meta:
+            app_label = 'core'
+
+
+class Position(models.Model):
+    name = models.CharField(max_length=100)
+    is_active = models.BooleanField(default=True)
+    department = models.ForeignKey(Department, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name

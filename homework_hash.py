@@ -43,7 +43,7 @@ class HashTable:
                 return self.table[index][1]
             index = (index + 1) % self.rosmir
 
-        raise KeyError('Ключ не знайдено')
+        raise KeyError("Ключ не знайдено")
 
     def __repr__(self):
         return str([item for item in self.table if item is not None])
@@ -55,4 +55,4 @@ hash_table.add("language", "Українська")
 hash_table.add("old", "15")
 
 print(hash_table)
-print("name", hash_table.get('name'))
+print("name", hash_table.get("name"))

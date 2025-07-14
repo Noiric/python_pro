@@ -33,12 +33,12 @@ class Library:
                 print(f"{book.title}, {book.year}")
 
     def save_to_file(self, filename: str):
-        with open(filename, 'w') as f:
+        with open(filename, "w") as f:
             json.dump([book.model_dump() for book in self.books], f)
         print("Список збережено у файл.")
 
     def load_from_file(self, filename: str):
-        with open(filename, 'r') as f:
+        with open(filename, "r") as f:
             data = json.load(f)
             self.books = [Book(**item) for item in data]
         print("Список завантажено з файлу.")

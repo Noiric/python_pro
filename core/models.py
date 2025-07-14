@@ -52,3 +52,20 @@ class Position(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Employee(models.Model):
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
+
+class LeaveRequest(models.Model):
+    employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
+    sick_days = models.PositiveIntegerField(default=0)
+    holiday_days = models.PositiveIntegerField(default=0)
+    reason = models.TextField(blank=True)
+
+    def __str__(self):
+        return f"Заявка від {self.employee.name}"
